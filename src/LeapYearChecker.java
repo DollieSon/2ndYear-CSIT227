@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Objects;
 
 public class LeapYearChecker extends JFrame{
     private JButton btnCheckYear;
@@ -11,6 +12,10 @@ public class LeapYearChecker extends JFrame{
         btnCheckYear.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if(Objects.equals(tfYear.getText(), "")){
+                    JOptionPane.showMessageDialog(null,"Text Area Must Be Filled");
+                    return;
+                }
                 int num = Integer.parseInt(tfYear.getText());
                 if(num%4 == 0 && num%100==0 && num%400 == 0){
                     JOptionPane.showMessageDialog(null,"Leap Year");
